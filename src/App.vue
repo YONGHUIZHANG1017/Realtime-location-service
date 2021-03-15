@@ -1,15 +1,24 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+  <div id="app" ref="app">
     <router-view />
   </div>
 </template>
 
+<script>
+export default {
+  mounted() {
+    const height = this.$refs.app.clientHeight
+    this.$store.commit('SET_APP_HEIGHT', height)
+  }
+}
+</script>
+
 <style lang="less">
-#app {
+html, body, #app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
